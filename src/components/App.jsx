@@ -62,14 +62,10 @@ class App extends Component {
 
   isDuplicate(name, number) {
     const normalizedName = name.toLowerCase();
-    const normalizedNumber = number.replace(/^\+/, '');
 
     const { contacts } = this.state;
-    const contact = contacts.find(({ name, number }) => {
-      return (
-        name.toLowerCase() === normalizedName &&
-        number.replace(/^\+/, '') === normalizedNumber
-      );
+    const contact = contacts.find(({ name }) => {
+      return name.toLowerCase() === normalizedName;
     });
 
     return Boolean(contact);

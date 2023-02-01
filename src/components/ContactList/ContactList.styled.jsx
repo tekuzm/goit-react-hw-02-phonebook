@@ -6,10 +6,13 @@ const List = styled.ul`
   padding-left: 15px;
 `;
 
-const Item = styled.li`
+const Wrap = styled.div`
   margin-bottom: 10px;
+
   display: flex;
   align-items: center;
+  flex-direction: row;
+
   gap: 10px;
 `;
 
@@ -39,4 +42,4 @@ const DeleteBtn = styled.button`
   }
 `;
 
-export { List, Item, DeleteBtn };
+export { List, Wrap, DeleteBtn };
