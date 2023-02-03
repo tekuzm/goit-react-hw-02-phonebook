@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
 
 // ========== components ==========
 
@@ -7,17 +6,12 @@ import ContactItem from 'components/ContactItem/ContactItem';
 
 // ========== styles ==========
 
-import { List, Wrap, DeleteBtn } from './ContactList.styled';
+import { List } from './ContactList.styled';
 
 const ContactList = ({ contacts, deleteContact }) => (
   <List>
     {contacts.map(({ id, name, number }) => (
-      <Wrap key={nanoid()}>
-        <ContactItem key={id} name={name} number={number} />
-        <DeleteBtn onClick={() => deleteContact(id)} type="button">
-          Delete
-        </DeleteBtn>
-      </Wrap>
+      <ContactItem key={id} name={name} number={number} />
     ))}
   </List>
 );

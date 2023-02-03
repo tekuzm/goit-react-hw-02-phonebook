@@ -1,9 +1,17 @@
 import PropTypes from 'prop-types';
 
-const ContactItem = ({ id, name, number }) => (
-  <li key={id}>
+// ========== styles ==========
+
+import { Item, Bullet, DeleteBtn } from './ContactItem.styled';
+
+const ContactItem = ({ id, name, number, deleteContact }) => (
+  <Item key={id}>
+    <Bullet></Bullet>
     {name}: {number}
-  </li>
+    <DeleteBtn onClick={() => deleteContact(id)} type="button">
+      Delete
+    </DeleteBtn>
+  </Item>
 );
 
 export default ContactItem;
