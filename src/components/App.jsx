@@ -19,7 +19,7 @@ class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    if (this.isDuplicate(name, number)) {
+    if (this.isDuplicate(name)) {
       alert(`${name} is already in contacts.`);
       return false;
     }
@@ -35,6 +35,8 @@ class App extends Component {
 
       return { contacts: [newContact, ...contacts] };
     });
+
+    return true;
   };
 
   handleFilter = ({ target }) => {
@@ -60,7 +62,7 @@ class App extends Component {
     });
   };
 
-  isDuplicate(name, number) {
+  isDuplicate = name => {
     const normalizedName = name.toLowerCase();
 
     const { contacts } = this.state;
@@ -69,7 +71,7 @@ class App extends Component {
     });
 
     return Boolean(contact);
-  }
+  };
 
   render() {
     const contacts = this.getFilteredContacts();
@@ -87,7 +89,10 @@ class App extends Component {
         }}
       >
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.addContact} />
+        <ContactForm
+          onSubmit={this.addContact}
+          checkIsDuplicate={this.isDuplicate}
+        />
 
         <h2>Contacts</h2>
         <Filter handleChange={this.handleFilter} />

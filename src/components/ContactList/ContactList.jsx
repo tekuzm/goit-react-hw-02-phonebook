@@ -11,7 +11,13 @@ import { List } from './ContactList.styled';
 const ContactList = ({ contacts, deleteContact }) => (
   <List>
     {contacts.map(({ id, name, number }) => (
-      <ContactItem key={id} name={name} number={number} />
+      <ContactItem
+        key={id}
+        id={id}
+        name={name}
+        number={number}
+        deleteItem={deleteContact}
+      />
     ))}
   </List>
 );
@@ -23,12 +29,12 @@ ContactList.defaultProps = {
 };
 
 ContactList.propTypes = {
-  deleteContact: PropTypes.func.isRequired,
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
+      deleteItem: PropTypes.func,
     })
   ),
 };
